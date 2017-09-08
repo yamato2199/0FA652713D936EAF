@@ -1,4 +1,4 @@
-@extends('template/base')
+@extends('layouts/base')
 @section('body')
     <form action="{{ route('shop.dish.store',$shop) }}" method="POST">
     	{{ csrf_field() }}
