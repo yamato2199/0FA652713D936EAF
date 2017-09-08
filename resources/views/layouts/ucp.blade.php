@@ -10,11 +10,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="renderer" content="webkit">
   <meta http-equiv="Cache-Control" content="no-siteapp" />
-  <link rel="icon" type="image/png" href="assets/i/favicon.png">
-  <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+  <link rel="icon" type="image/png" href="UCP/i/favicon.png">
+  <link rel="apple-touch-icon-precomposed" href="{{ asset('UCP/i/app-icon72x72@2x.png') }}">
   <meta name="apple-mobile-web-app-title" content="UCP" />
-  <link rel="stylesheet" href="assets/css/amazeui.min.css"/>
-  <link rel="stylesheet" href="assets/css/admin.css">
+  <link rel="stylesheet" href="{{ asset('UCP/css/amazeui.min.css') }}"/>
+  <link rel="stylesheet" href="{{ asset('UCP/css/admin.css') }}">
+  <style>
+    .am-btn-toolbar a {
+        background-color: white;
+    }
+
+  </style>
 </head>
 
 <body>
@@ -31,12 +37,17 @@
       	<li><a href="javascript:;"><span class="am-icon-envelope-o"></span> Notification <span class="am-badge am-badge-warning">5</span></a></li>
       	<li class="am-dropdown" data-am-dropdown>
 	        <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
-	          	<span class="am-icon-users"></span> UserName <span class="am-icon-caret-down"></span>
+	          	<span class="am-icon-users"></span> {{ Auth::user()->name }} <span class="am-icon-caret-down"></span>
 	        </a>
 	        <ul class="am-dropdown-content">
 	          	<li><a href="#"><span class="am-icon-user"></span> Profile</a></li>
 	          	<li><a href="#"><span class="am-icon-cog"></span> Settings</a></li>
-	          	<li><a href="#"><span class="am-icon-power-off"></span> Logout</a></li>
+	          	<li>
+              <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><span class="am-icon-power-off"></span> Logout</a>
+              </li>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+              </form>
 	        </ul>
       	</li>
     
@@ -63,8 +74,8 @@
         <li>
           <a class="am-cf" data-am-collapse="{target: '#collapse-nav1'}"><span class="am-icon-archive"></span> Shops <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
           	<ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav1">
-	            <li><a href="admin-user.html" class="am-cf"><span class="am-icon-archive"></span> Shops </a></li>
-	            <li><a href="admin-help.html"><span class="am-icon-list"></span> Main Menus</a></li>
+	            <li><a href="{{ route('shop.index') }}" class="am-cf"><span class="am-icon-archive"></span> My Shops</a></li>
+	            <li><a href="admin-help.html"><span class="am-icon-list"></span> My Dishes</a></li>
 	            
           	</ul>
         </li>
@@ -79,7 +90,7 @@
       </ul>
       <form class="am-form">
         <fieldset>
-          <button href="#" style="width:100%;" class="am-btn am-btn-danger">Log Out</button>
+          <button href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" style="width:100%;" class="am-btn am-btn-danger"><span class="am-icon-power-off"></span> Log Out</button>
         </fieldset>
       </form>
 
@@ -93,7 +104,7 @@
   <div class="admin-content">
     <div class="admin-content-body">
     
-    <h1>Custom Content</h1>
+    @yield('body')
 
     </div>
 
@@ -117,8 +128,8 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 
 <!--<![endif]-->
-<script src="assets/js/amazeui.min.js"></script>
-<script src="assets/js/app.js"></script>
+<script src="{{ asset('UCP/js/amazeui.min.js') }}"></script>
+<script src="{{ asset('UCP/js/app.js') }}"></script>
 </body>
 </html>
 
