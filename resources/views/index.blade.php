@@ -1,4 +1,4 @@
-@extends('template/base') 
+@extends('layouts/base') 
 @section('body')
 <div class="row">
     <div class="text-center" style="margin-left: auto; margin-right: auto; margin-top: 100px; margin-bottom: 120px;">

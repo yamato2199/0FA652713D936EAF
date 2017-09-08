@@ -18,7 +18,7 @@ Route::get('/', function () {
 //限制UCP必须要用户登录后才能使用
 Route::group(['middleware'=>'auth'],function(){
 Route::resource('ucp/shop.dish','DishAdminController');
-
+Route::resource('ucp/contact','ContactAdminController');
 Route::resource('ucp/shop','ShopAdminController');
 
 
