@@ -1,4 +1,4 @@
-@extends('template/base')
+@extends('layouts/base')
 @section('body')
 <div class = "container">
     <h1>Edit dish</h1>

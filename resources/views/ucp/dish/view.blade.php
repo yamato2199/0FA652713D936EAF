@@ -1,4 +1,4 @@
-@extends('template/base')
+@extends('layouts/base')
 @section('body')
 	<h1>Dish</h1>
 
