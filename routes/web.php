@@ -18,7 +18,10 @@ Route::get('/', function () {
 //限制UCP必须要用户登录后才能使用
 Route::group(['middleware'=>'auth'],function(){
 
+
 Route::resource('ucp/shop.dish','DishAdminController');
+Route::resource('ucp/contact','ContactAdminController');
+
 Route::resource('ucp/shop','ShopAdminController');
 //UCP
 Route::get('ucp','UcpController@index')->name('ucp.index');
@@ -29,4 +32,6 @@ Route::get('ucp/test','UcpController@test');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/search','SearchController@all')->name('search.all');
+
