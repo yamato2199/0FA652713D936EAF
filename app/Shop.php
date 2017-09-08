@@ -10,7 +10,6 @@ class Shop extends Model
 
     public function dishs()
     {
-        
         return $this->hasMany('App\Dish');
     }
 

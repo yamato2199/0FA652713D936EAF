@@ -2,7 +2,8 @@
 @section('body')
 <div class = "container">
     <h1>Edit dish</h1>
-    <form action="{{route('ucp.dishs.update', $dish->id)}}" method="POST">
+    {{--route('ucp.dishs.update', $dish->id)--}} 
+    <form action="{{route('shop.dish.update',['shop'=>$dish->shop_id,'dish'=>$dish->id])}}" method="POST">
         {{csrf_field()}}
         {{method_field('PUT')}}
         <div class = "form-group">
