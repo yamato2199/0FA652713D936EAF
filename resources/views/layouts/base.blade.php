@@ -8,18 +8,21 @@
     <!-- TemplateEndEditable -->
     <!-- TemplateBeginEditable name="head" -->
     <!-- TemplateEndEditable -->
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
-    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" type="text/css">
-    <link href="Assets/css/custom.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-main-theme.css') }}">
+    <link href="{{ asset('css/bootstrap-main-theme.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/search.css') }}" rel="stylesheet" type="text/css">
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
     <script src="{{ asset('js/bootstrap.js') }}"></script>
+
+    
 
 </head>
 
 <body>
     <!-- 导航栏 -->
-    <nav class="navbar navbar-inverse" role="navigation">
+    <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-collapse">
@@ -76,6 +79,7 @@
     <!-- 导航栏结束 -->
 
     <!-- TemplateBeginEditable name="MainContext" -->
+    @yield('main')
     <div class="container-fluid">
         <div class="container">
             @yield('body')

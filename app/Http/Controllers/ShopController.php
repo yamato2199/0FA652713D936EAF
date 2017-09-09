@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Shop;
 class ShopController extends Controller
 {
     /**
@@ -11,9 +11,10 @@ class ShopController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($shopid)
     {
-        //
+        
+        
     }
 
     /**
@@ -45,7 +46,9 @@ class ShopController extends Controller
      */
     public function show($id)
     {
-        //
+        $Shop = Shop::findOrFail($id);
+
+        return view('shop.index',compact('Shop'));
     }
 
     /**

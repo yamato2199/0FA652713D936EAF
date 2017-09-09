@@ -11,8 +11,9 @@ class Dish extends Model
         'dishName', 'dishPic', 'price', 'shop_id' , 'avaible','dishDes'
     ];
 
-    public function shop(){
-        return $this->belongsTo(Shop::class);
+    public function shop()
+    {
+        return $this->belongsTo("App\Shop");
     }
 
 }

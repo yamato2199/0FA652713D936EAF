@@ -36,6 +36,9 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('ucp/index','UcpController@index')->name('ucp.index');
 });
 
+Route::resource('shop','ShopController');
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

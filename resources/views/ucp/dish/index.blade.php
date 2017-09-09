@@ -6,8 +6,17 @@
     </div>
 	<!-- 标题 -->
     <hr>
-
-
+	<div class="am-g">
+		<!-- 标题工具栏 -->
+		<div class="am-u-sm-12 am-u-md-6">
+			<div class="am-btn-toolbar">
+				<div class="am-btn-group am-btn-group-xs">
+					<a href="{{ route('ucp.shop.dish.create',$shop->id) }}" type="button" class="am-btn am-btn-default"><span class="am-icon-plus"></span> New Dish</a>
+				</div>
+			</div>
+		</div>
+		<!-- 标题工具栏 -->
+	</div>
 
 	<h1>Dish</h1>
 
