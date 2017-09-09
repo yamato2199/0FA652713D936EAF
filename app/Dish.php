@@ -8,7 +8,7 @@ class Dish extends Model
 {
     //  
     protected $fillable = [
-        'dishName', 'dishPic', 'price', 'shop_id' , 'avaible'
+        'dishName', 'dishPic', 'price', 'shop_id' , 'avaible','dishDes'
     ];
 
     public function shop(){

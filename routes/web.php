@@ -18,15 +18,22 @@ Route::get('/', function () {
 //限制UCP必须要用户登录后才能使用
 Route::group(['middleware'=>'auth'],function(){
 
+    //添加UCP自动命名前缀
+   
+    Route::resource('ucp/shop.dish','DishAdminController',[
+        'as' => 'ucp'
+    ]);
+    Route::resource('ucp/contact','ContactAdminController',[
+        'as' => 'ucp'
+    ]);
+    Route::resource('ucp/shop','ShopAdminController',[
+        'as' => 'ucp'
+    ]);
 
-Route::resource('ucp/shop.dish','DishAdminController');
-Route::resource('ucp/contact','ContactAdminController');
-
-Route::resource('ucp/shop','ShopAdminController');
-//UCP
-Route::get('ucp','UcpController@index')->name('ucp.index');
-Route::get('ucp/test','UcpController@test');
-
+   
+    
+    Route::get('ucp/test','UcpController@index');
+    Route::get('ucp/index','UcpController@index')->name('ucp.index');
 });
 
 Auth::routes();

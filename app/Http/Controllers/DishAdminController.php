@@ -34,15 +34,17 @@ class DishAdminController extends Controller
       * @param  \Illuminate\Http\Request  $request
       * @return \Illuminate\Http\Response
       */
-     public function store(Request $request)
+     public function store(Request $request,$shop_id)
      {
          //
          $dishs = $request->all();
          //print_r($data);
-         Dish::create($dishs);
+         $Shop = Shop::find($shop_id);
+         $Shop->dishs()->create($dishs);
+         //Dish::create($dishs);
          //return
-         $shop_id = $request->shop_id;
-         return redirect()->route('shop.show', compact('shop_id'));//0 为商店id
+         //$shop_id = $request->shop_id;
+         return redirect()->route('ucp.shop.show', compact('shop_id'));//0 为商店id
      }
  
      /**

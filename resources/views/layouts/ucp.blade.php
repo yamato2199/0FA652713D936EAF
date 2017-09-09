@@ -74,7 +74,7 @@
         <li>
           <a class="am-cf" data-am-collapse="{target: '#collapse-nav1'}"><span class="am-icon-archive"></span> Shops <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
           	<ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav1">
-	            <li><a href="{{ route('shop.index') }}" class="am-cf"><span class="am-icon-archive"></span> My Shops</a></li>
+	            <li><a href="{{ route('ucp.shop.index') }}" class="am-cf"><span class="am-icon-archive"></span> My Shops</a></li>
 	            <li><a href="admin-help.html"><span class="am-icon-list"></span> My Dishes</a></li>
 	            
           	</ul>

@@ -8,7 +8,7 @@
     </div>
     <hr/>
 
-    <form id="create_form" class="am-form" action="{{route('shop.store')}}" method="POST" data-am-validator>
+    <form id="create_form" class="am-form" action="{{route('ucp.shop.store')}}" method="POST" data-am-validator>
         <fieldset>
             {{ csrf_field() }}
             <!-- 折叠面板 -->

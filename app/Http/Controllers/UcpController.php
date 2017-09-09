@@ -9,7 +9,6 @@ class UcpController extends Controller
     //
     public function index()
     {
-        //return "去你妈的";
         return view('ucp/index');
     }
 

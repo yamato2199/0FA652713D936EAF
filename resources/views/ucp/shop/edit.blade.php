@@ -21,7 +21,7 @@
 
                 <div class="am-tabs-bd">
                     <div class="am-tab-panel am-fade am-in am-active" id="tab1">
-                        <form class="am-form" action="{{route('shop.update', $shop->id)}}" method="POST" data-am-validator>
+                        <form class="am-form" action="{{route('ucp.shop.update', $shop->id)}}" method="POST" data-am-validator>
                             <fieldset>
                             {{csrf_field()}}
                             {{method_field('PUT')}}
@@ -44,7 +44,7 @@
                         </form> 
                     </div>
                     <div class="am-tab-panel am-fade" id="tab2">
-                        <form class="am-form" action="{{route('shop.update', $shop->id)}}" method="POST">
+                        <form class="am-form" action="{{route('ucp.shop.update', $shop->id)}}" method="POST">
                              <fieldset>
                                 {{csrf_field()}}
                                 {{method_field('PUT')}}

@@ -1,4 +1,4 @@
-@extends('layouts/base')
+@extends('layouts.ucp')
 @section('body')
 	<h1>Dish</h1>
 

@@ -17,6 +17,7 @@ class CreateDishesTable extends Migration
             $table->increments('id');
             $table->string('dishName');
             $table->text('dishPic');
+            $table->text('dishDes');
             $table->double('price');
             $table->integer('shop_id');
             $table->boolean('avaible')->default(1);
