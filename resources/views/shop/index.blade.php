@@ -1,0 +1,77 @@
+@extends('layouts.base')
+
+
+@section('main')
+<script src="{{ asset('js/jquery.bootstrap-touchspin.js') }}"></script>
+<link href="{{ asset('css/jquery.bootstrap-touchspin.css') }}" rel="stylesheet" type="text/css">
+
+<div class="container-fluid" >
+    <div class="container">
+        <div class="row">
+             <div class="col-md-8"><h1>{{ $Shop->shop_name }}</h1><p>{{ $Shop->shop_des }}</p></div>
+             <div class="col-md-2 text-center" ><h4>Area</h4><h3>{{ $Shop->shop_city }}</h3></div>
+             <div class="col-md-2 text-center"><h4>Rating</h4><h3>5/10</h3></div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+        <div class="container">
+        <!-- 商家二级菜单 -->
+        <br/><br/>
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Main Menus</a></li>
+            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Comments</a></li>
+            <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Contact</a></li>
+        </ul>
+        <!-- 商家二级菜单 -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="home">
+            <h3>Main Menus</h3>
+            <hr/>
+            
+                <!-- 菜品列表(每行2列) -->
+                <div class="row">
+                    @foreach( $Shop->dishs as $dish )
+                    <div class="col-md-6"> 
+                        <div class="thumbnail">
+                            <img src="..." >
+                            <div class="caption">
+                                <div class="media">
+                                <div class="media-left">
+                                    <a href="#">
+                                    <img class="media-object" src="PICTURE_HERE" alt="PICTURE_HERE">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">{{ $dish->dishName }}</h4>
+                                    <p>{{ $dish->dishDes }}</p>
+                                    {{--<button class="btn btn-primary pull-right">Add to cart</button> --}}
+                                    <input id="incr-{{ $dish->id }}" type="text" value="0" >
+
+
+                                    <h3 class="text-primary">${{ $dish->price }}</h3>
+                                    
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- JS -->
+                    <script>
+                        $("#incr-{{ $dish->id }}").TouchSpin();
+                    </script>
+
+                    @endforeach
+                </div>
+                <!-- 菜品列表 -->
+
+                <button class="btn btn-primary pull-right"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Checkout</button>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="profile">.ddd.</div>
+            <div role="tabpanel" class="tab-pane" id="messages">...</div>
+        </div>
+    </div>
+</div>
+
+@endsection
