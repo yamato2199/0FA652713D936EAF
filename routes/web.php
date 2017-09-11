@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('index');
 
 //限制UCP必须要用户登录后才能使用
 Route::group(['middleware'=>'auth'],function(){
@@ -37,7 +37,8 @@ Route::group(['middleware'=>'auth'],function(){
 });
 
 Route::resource('shop','ShopController');
-
+Route::resource('order','OrderController');
+Route::post('order/comfirm/{shop}','OrderController@cofirm')->name('order.comfirm');
 
 Auth::routes();
 

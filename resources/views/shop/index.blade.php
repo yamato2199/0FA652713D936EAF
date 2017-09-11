@@ -19,17 +19,23 @@
         <div class="container">
         <!-- 商家二级菜单 -->
         <br/><br/>
+        
+
         <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Main Menus</a></li>
-            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Comments</a></li>
-            <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Contact</a></li>
+            <li role="presentation"><a href="#comment" aria-controls="comment" role="tab" data-toggle="tab">Comments</a></li>
+            <li role="presentation"><a href="#contact" aria-controls="contact" role="tab" data-toggle="tab">Contact</a></li>
         </ul>
+        <div class="panel panel-default">
+        <div class="panel-body">
         <!-- 商家二级菜单 -->
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="home">
             <h3>Main Menus</h3>
             <hr/>
-            
+                <form action="{{ route('order.comfirm',$Shop->id) }}" method="POST">
+                {{ csrf_field() }}  
+       
                 <!-- 菜品列表(每行2列) -->
                 <div class="row">
                     @foreach( $Shop->dishs as $dish )
@@ -39,18 +45,18 @@
                             <div class="caption">
                                 <div class="media">
                                 <div class="media-left">
-                                    <a href="#">
-                                    <img class="media-object" src="PICTURE_HERE" alt="PICTURE_HERE">
-                                    </a>
+                                    
+                                <img class="media-object" style="width:150px; height:150px;" src="{{ $dish->dishPic }}">
+                                   
                                 </div>
                                 <div class="media-body">
                                     <h4 class="media-heading">{{ $dish->dishName }}</h4>
                                     <p>{{ $dish->dishDes }}</p>
                                     {{--<button class="btn btn-primary pull-right">Add to cart</button> --}}
-                                    <input id="incr-{{ $dish->id }}" type="text" value="0" >
+                                    <input name="dishid_{{ $dish->id }}" id="incr-{{ $dish->id }}" style="font-size:20px;" type="text" value="0" >
 
-
-                                    <h3 class="text-primary">${{ $dish->price }}</h3>
+                                    
+                                    <h2 class="text-primary">${{ $dish->price }}</h2>
                                     
                                 </div>
                                 </div>
@@ -66,11 +72,27 @@
                 </div>
                 <!-- 菜品列表 -->
 
-                <button class="btn btn-primary pull-right"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Checkout</button>
+                <button type="submit" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Checkout</button>
+                </form>
             </div>
-            <div role="tabpanel" class="tab-pane" id="profile">.ddd.</div>
-            <div role="tabpanel" class="tab-pane" id="messages">...</div>
+            <div role="tabpanel" class="tab-pane" id="comment">.ddd.</div>
+            <div role="tabpanel" class="tab-pane" id="contact">
+                <h3>Address</h3>
+                <hr/>
+                <h4>
+                {{ $Shop->shop_street_number }}
+                {{ $Shop->shop_street }}
+                {{ $Shop->shop_city }}
+                {{ $Shop->shop_state }}
+                {{ $Shop->shop_zipcode }}
+                {{ $Shop->shop_country }}
+
+                </h4>
+            </div> 
+            </div> 
+            </div>
         </div>
+        
     </div>
 </div>
 
