@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Order;
+use App\OrderItem;
+
 
 class OrderController extends Controller
 {
@@ -11,79 +15,67 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function index()
+    {
+         //
+    }
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     public function cofirm(Request $req,$shop_id)
     {
         return $req->all();
     }
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function addItem (Request $req,$shopId,$dishId){
+    
+        $order = Order::where('user_id',Auth::user()->id)->first();
+    
+        if(!$order){
+                $order =  new Order();
+                $order->user_id=Auth::user()->id;
+                $order->save();
+        }
+    
+        $orderItem  = new Orderitem();
+        $orderItem->dish_id=$dishId;
+        $orderItem->shop_id=$shopId;
+        $orderItem->order_id= $order->id;
+        $orderItem->save();
+    
+        //return redirect('/cart');
+        return back();
+        
+        
         
     }
+    public function showCart(){
+        $order = Order::where('user_id',Auth::user()->id)->first();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        if(!$order){
+            $order = new Order();
+            $order->user_id=Auth::user()->id;
+            $order->save();
+        }
+
+        $items = $order->orderItems;
+        $total=0;
+        foreach($items as $item){
+            $total+=$item->dish->price;
+        }
+
+        return view('order.cart',compact('items'),compact('total'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+    public function removeItem($id){
+
+        OrderItem::destroy($id);
+        //return redirect('/cart');
+        return back();
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

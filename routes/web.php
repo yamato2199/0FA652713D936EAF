@@ -36,9 +36,17 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('ucp/index','UcpController@index')->name('ucp.index');
 });
 
+
+//Order
+Route::post('order/add/{shopId}/{dishId}','OrderController@addItem')->name('order.add');
+Route::get('order/remove/{id}', 'OrderController@removeItem')->name('order.remove');
+Route::get('order/cart', 'OrderController@showCart')->name('order.cart');
+
+
+
 Route::resource('shop','ShopController');
-Route::resource('order','OrderController');
-Route::post('order/comfirm/{shop}','OrderController@cofirm')->name('order.comfirm');
+
+//Route::post('order/comfirm/{shop}','OrderController@cofirm')->name('order.comfirm');
 
 Auth::routes();
 
