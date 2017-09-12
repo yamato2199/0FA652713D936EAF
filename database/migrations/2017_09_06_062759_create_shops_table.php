@@ -24,8 +24,13 @@ class CreateShopsTable extends Migration
             $table->string('shop_state');
             $table->string('shop_zipcode');
             $table->string('shop_country');
-            $table->integer('user_id');
+            $table->integer('user_id')->unsigned();
+           // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
+        });
+        
+        Schema::table('shops', function($table) {
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

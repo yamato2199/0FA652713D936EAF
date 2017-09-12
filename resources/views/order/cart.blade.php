@@ -50,7 +50,7 @@
                     <td>   </td>
                     <td>   </td>
                     <td>
-                        <a href="{{ back() }}"> <button type="button" class="btn btn-default">
+                        <a href="{{ route('index') }}"> <button type="button" class="btn btn-default">
                                 <span class="fa fa-shopping-cart"></span> Back to shop
                             </button>
                         </a></td>

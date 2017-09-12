@@ -24,7 +24,7 @@
 			<table class="am-table am-table-striped am-table-hover table-main">
 				<thead>
 					<tr>
-						<th class="table-id">ID</th><th class="table-title">Name</th><th class="table-type">Description</th><th class="table-author am-hide-sm-only">Price</th><th class="table-date am-hide-sm-only">Create Date</th><th class="table-set">Operation</th>
+						<th class="table-id">ID</th><th class="table-title">Name</th><th class="table-type">Description</th><th class="table-author am-hide-sm-only">Price</th><th class="table-date am-hide-sm-only">Aviable</th><th class="table-date am-hide-sm-only">Create Date</th><th class="table-set">Operation</th>
 					</tr>
 					</thead>
 					<tbody>
@@ -34,7 +34,12 @@
 							<td><a href="{{route('ucp.shop.dish.edit',['shop'=>$dish->shop_id,'dish'=>$dish->id])}}">{{ $dish->dishName }}</a></td>
 							<td>{{ $dish->dishDes }}</td>
 							<td class="am-hide-sm-only">${{ $dish->price }}</td>
-							<td class="am-hide-sm-only">{{ $shop->created_at }}</td>
+							<td class="am-hide-sm-only">
+							@if($dish->avaible) <a class="am-badge am-badge-success am-radius">Aviable</a>
+							@else <a class="am-badge am-badge-danger am-radius">Not Aviable</a>
+							@endif
+							</td>
+							<td class="am-hide-sm-only">{{ $dish->created_at }}</td>
 							<td>
 							<div class="am-btn-toolbar">
 								<div class="am-btn-group am-btn-group-xs">

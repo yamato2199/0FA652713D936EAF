@@ -16,4 +16,10 @@ class Dish extends Model
         return $this->belongsTo("App\Shop");
     }
 
+    public function orderItem()
+    {
+        return $this->hasOne("App\OrderItem");
+    }
+
+
 }

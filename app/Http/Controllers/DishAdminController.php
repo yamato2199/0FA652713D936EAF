@@ -90,12 +90,14 @@ class DishAdminController extends Controller
       */
      public function update(Request $request,$shop_id, $dish_id)
      {
+         
          //$dish = Dish::find($id);
-         $Shop = Shop::find($shop_id);
-         $dish = $Shop->dishs()->find($dish_id);
-         $dish->update($request->all());
+        $Shop = Shop::find($shop_id);
+        $dish = $Shop->dishs()->find($dish_id);
+        $dish->update($request->all());
          //return redirect()->route('shop.dish.show', compact('shop_id'));
-         return redirect()->route('ucp.shop.show', compact('shop_id'));
+        return redirect()->route('ucp.shop.show', compact('shop_id'));
+         //return $request->all();
      }
  
      /**
