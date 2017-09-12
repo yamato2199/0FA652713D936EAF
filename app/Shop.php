@@ -13,6 +13,13 @@ class Shop extends Model
         return $this->hasMany('App\Dish');
     }
 
+    public function orders()
+    {
+        return $this->hasMany('App\Order');
+    }
+
+
+
     public function owner(){
         //return $this->belongsTo(User::class);
     }

@@ -33,11 +33,13 @@ class OrderController extends Controller
     }
     public function addItem (Request $req,$shopId,$dishId){
     
-        $order = Order::where('user_id',Auth::user()->id)->first();
+        $order = Order::where('user_id',Auth::user()->id)->where('shop_id', $shopId)->first();
     
+        
         if(!$order){
                 $order =  new Order();
                 $order->user_id=Auth::user()->id;
+                $order->shop_id = $shopId;
                 $order->save();
         }
     
@@ -54,8 +56,9 @@ class OrderController extends Controller
         
     }
     public function showCart(){
-        $order = Order::where('user_id',Auth::user()->id)->first();
+        $orders = Order::where('user_id',Auth::user()->id)->get();
 
+        /*
         if(!$order){
             $order = new Order();
             $order->user_id=Auth::user()->id;
@@ -63,18 +66,37 @@ class OrderController extends Controller
         }
 
         $items = $order->orderItems;
-        $total=0;
+ 
+        
+        /*
         foreach($items as $item){
             $total+=$item->dish->price;
         }
-
-        return view('order.cart',compact('items'),compact('total'));
+*/
+        //return $order;
+        return view('order.cart',compact('orders'));
     }
 
     public function removeItem($id){
 
+        
+        $orderItem = OrderItem::where('id', $id)->first();
         OrderItem::destroy($id);
+        
+        if(!OrderItem::where('shop_id', $orderItem->shop_id)->count())
+        {
+            $orderItem->order->delete();
+            
+        }
+        
+        /*
+        if(!OrderItem::where('id', $id)->count()){
+            
+        }
+        */
         //return redirect('/cart');
+        //return OrderItem::where('shop_id', $orderItem->shop_id)->count();
+        //return OrderItem::where('shop_id', $orders->shop_id)->count();
         return back();
     }
 
