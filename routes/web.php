@@ -29,7 +29,7 @@ Route::group(['middleware'=>'auth'],function(){
     Route::resource('ucp/shop','ShopAdminController',[
         'as' => 'ucp'
     ]);
-
+    Route::resource('transaction','TransactionController');
    
     
     Route::get('ucp/test','UcpController@index');
@@ -42,6 +42,7 @@ Route::post('order/add/{shopId}/{dishId}','OrderController@addItem')->name('orde
 Route::get('order/remove/{id}', 'OrderController@removeItem')->name('order.remove');
 Route::get('order/cart', 'OrderController@showCart')->name('order.cart');
 
+Route::post('order/comfirm/{id}', 'OrderController@comfirm')->name('order.comfirm');
 
 
 Route::resource('shop','ShopController');

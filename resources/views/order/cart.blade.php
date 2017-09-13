@@ -67,9 +67,12 @@
                   </a>
                </td>
                <td>
-                  <button type="button" class="btn btn-success">
-                    Checkout <span class="fa fa-play"></span>
-                  </button>
+               <form action="{{ route('order.comfirm',$order->id) }}" method="POST">
+										{{csrf_field()}}
+                    <button type="submit" class="btn btn-success">
+                      Checkout <span class="fa fa-play"></span>
+                    </button>
+							</form>  
                </td>
             </tr>
          </tbody>

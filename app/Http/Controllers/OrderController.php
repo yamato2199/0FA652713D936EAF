@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Order;
 use App\OrderItem;
+use App\Contact;
+use DB;
 
 
 class OrderController extends Controller
@@ -27,9 +29,25 @@ class OrderController extends Controller
     }
 
 
-    public function cofirm(Request $req,$shop_id)
+    public function comfirm($orderId)
     {
-        return $req->all();
+
+        //SELECT count(`order_id`) as 'qty' FROM `order_items` WHERE `dish_id` = 1 GROUP BY `dish_id`,`shop_id`
+
+        $orderItems = OrderItem::where('order_id',$orderId)->groupBy('dish_id','shop_id')->get();
+        $order = Order::find($orderId);
+        $contacts = Contact::where('user_id',Auth::user()->id)->get();
+
+        $total_price = 0;
+        
+        foreach($orderItems as $orderItem)
+        {
+            $total_price+= $orderItem->dish->price;
+        }
+       
+        return view('order.confirm',compact('order','orderItems','total_price','contacts'));
+        //return $order->orderItemsQty;
+        
     }
     public function addItem (Request $req,$shopId,$dishId){
     
