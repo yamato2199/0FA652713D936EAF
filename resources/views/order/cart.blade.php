@@ -3,6 +3,15 @@
 <div class="row">
    <div class="col-sm-12 col-md-10 col-md-offset-1">
       {{-- $items->where('shop_id',1)->count() --}}
+      @if(!$orders->count())
+        <div class="panel panel-default">
+        <div class="panel-heading">System</div>
+        <div class="panel-body">
+          <p>You do not have any item in your cart.</p>
+          <a href="{{ route('index') }}" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Back to home</a>
+        </div>
+      </div>
+      @endif
       @foreach($orders as $order)
       <h1> {{ $order->shop->shop_name }}</h1>
       <table class="table table-hover">

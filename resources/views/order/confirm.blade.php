@@ -1,7 +1,7 @@
 @extends('layouts/base')
 @section('body')
     <h1>Comfirm</h1>
-
+    </hr>
     <div class="table-responsive">
     <table class="table table-striped">
         <thead>
@@ -43,7 +43,7 @@
     </div>
 
     <!-- 选择送货地址 -->
-    <form action="" method="POST">
+    <form action="{{ route('transaction.create', $order->first()->id ) }}" method="GET">
     @if($contacts->count())
     <table class="table table-striped">
         <thead>
@@ -53,7 +53,7 @@
                 <th>Address</th>
                 <th>ZipCode</th>
                 <th>Phone</th>
-                <th>Set Default</th>
+                <th>Use this address</th>
             </tr>
             </thead>
 
@@ -67,17 +67,13 @@
                     <td>{{ $contact->cont_phone }}</td>
                    
                     <td>
-                    
-                        
-
-                            <input type="hidden" id="df_{{ $contact->id }}" class="am-form-field am-radius" value="{{$contact->cont_isdefault}}" name="cont_isdefault" required> 
+                     
+                        @if( $contact->cont_isdefault )
+                            <input type="radio" name="selected_address" value="{{ $contact->id }}" checked>
+                        @else
                             
-                            @if( $contact->cont_isdefault )
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                            @else
-                                
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
-                            @endif
+                            <input type="radio" name="selected_address"  value="{{ $contact->id }}">
+                        @endif
                        
                     </td>
                 
@@ -88,25 +84,26 @@
             </tbody>
         </thead>
     </table>
-    
- 
+    <h3>Addtional Note</h3>
+    </hr>
+    <div class="form-group">
+        <textarea class="form-control" name="note" rows="7" cols="50" placeholder="Any addition note?"></textarea>
+    </div>
+    <button type="submit" class="btn btn-success pull-right" ><span class="glyphicon glyphicon-ok"></span> Confirm </button>
     @else
         <br/>
-        <div class="am-g">
-            <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
-                <div class="am-panel am-panel-default">
-                    <div class="am-panel-hd">SYSTEM</div>
-                        <div class="am-panel-bd">
-                            You do not have any contact yet.
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="panel panel-danger">
+        <div class="panel-heading">Error</div>
+        <div class="panel-body">
+            <p>To process the transaction, you need to have at least 1 contact detail created in your accout. </p>
+            <p><a href="{{ route('ucp.contact.index') }}">Click here</a> to create a new contact.</p>
+        </div>
         </div>
         <!-- 无数据的时候提示 -->
-        
+        <button type="submit" class="btn btn-success pull-right" disabled><span class="glyphicon glyphicon-ok"></span> Confirm </button>
     @endif
-        <button type="submit" class="btn btn-success">Confirm <span class="fa fa-play"></span></button>
+
+        
     </form>
 
 @endsection

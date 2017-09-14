@@ -58,8 +58,8 @@
                         </div>
                     </div>
                 </div>
-
-                <input type="hidden" name="cont_isdefault" value="0">
+    
+                <input type="hidden" name="cont_isdefault" value="1">
 
                 <input type="hidden" name="user_id" value="{{$user}}">
 

@@ -20,8 +20,9 @@ class CreateTransactionTable extends Migration
             $table->string('cust_phone');
             $table->string('cust_name');
             $table->string('shop_name');
-            $table->string('shop_address');
+            $table->text('shop_address');
             $table->string('shop_phone');
+            $table->text('note')->nullable();
             $table->timestamps();
             
         });

@@ -29,7 +29,7 @@ Route::group(['middleware'=>'auth'],function(){
     Route::resource('ucp/shop','ShopAdminController',[
         'as' => 'ucp'
     ]);
-    Route::resource('transaction','TransactionController');
+    Route::get('transaction/{orderid}','TransactionController@create')->name('transaction.create');
    
     
     Route::get('ucp/test','UcpController@index');
@@ -54,4 +54,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/search','SearchController@all')->name('search.all');
+
 
