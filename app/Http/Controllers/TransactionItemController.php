@@ -3,21 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\Shop;
-use App\Order;
 
-class ShopController extends Controller
+class TransactionItemController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($shopid)
+    public function index()
     {
-        
-        
+        //
     }
 
     /**
@@ -39,7 +35,6 @@ class ShopController extends Controller
     public function store(Request $request)
     {
         //
-        
     }
 
     /**
@@ -50,12 +45,7 @@ class ShopController extends Controller
      */
     public function show($id)
     {
-        $Shop = Shop::findOrFail($id);
-        /*
-        $order = Order::where('user_id',Auth::user()->id)->first();
-        if($order) $items = $order->orderItems;
-        */
-        return view('shop.index',compact('Shop'));
+        //
     }
 
     /**

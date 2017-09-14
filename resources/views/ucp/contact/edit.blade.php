@@ -1,56 +1,62 @@
-@extends('layouts/base')
+@extends('layouts/ucp')
 @section('body')
+    <div class="am-cf am-padding am-padding-bottom-0">
+    	<div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">Edit Contact</strong></div>
+    </div>
+    <hr/>
 <div class = "container">
-    <h1>Edit contact</h1>
-    <form action="{{route('contact.update', $contact->id}}" method="POST">
+    <form action="{{route('ucp.contact.update', $contact->id) }}" method="POST">
+    <fieldset>
         {{csrf_field()}}
         {{method_field('PUT')}}
-        <div class = "form-group">
-            <label for = "cont_street_number">street number</label>
-            <input class = "form-control" type = "text" name = "cont_street_number" value = "{{$contact->cont_street_number}}">
-        </div>
-        <div class="form-group">
-            <label for = "cont_street">street</label>
-            <input class = "form-control" type = "text" name = "cont_street" value = "{{$contact->cont_street}}">
-        </div>
-        <div class="form-group">
-            <label for = "cont_city">city</label>
-            <input class = "form-control" type = "text" name = "cont_city" value = "{{$contact->cont_city}}">
-        </div>
-        <div class="form-group">
-            <label for = "cont_state">state</label>
-            <input class = "form-control" type = "text" name = "cont_state" value = "{{$contact->cont_state}}">
-        </div>
-        <div class="form-group">
-            <label for = "cont_zipcode">zipcode</label>
-            <input class = "form-control" type = "text" name = "cont_zipcode" value = "{{$contact->cont_zipcode}}">
-        </div>
-        <div class="form-group">
-            <label for = "cont_country">country</label>
-            <input class = "form-control" type = "text" name = "cont_country" value = "{{$contact->cont_country}}">
-        </div>
-        <div class="form-group">
-            <label for = "cont_phone">phone</label>
-            <input class = "form-control" type = "text" name = "cont_phone" value = "{{$contact->cont_phone}}">
-        </div>
-        <div class="form-group">
-            <label for = "cont_firstname">firstname</label>
-            <input class = "form-control" type = "text" name = "cont_firstname" value = "{{$contact->cont_firstname}}">
-        </div>
-        <div class="form-group">
-            <label for = "cont_lastname">lastname</label>
-            <input class = "form-control" type = "text" name = "cont_lastname" value = "{{$contact->cont_lastname}}">
-        </div>
-        <div class="form-group">
-            <label for = "cont_gender">gender</label>
-            <input class = "form-control" type = "number" name = "cont_gender" value = "{{$contact->cont_gender}}">
-        </div>
-        <div class="form-group">
-            <label for="cont_isdefault">isdefault</label>
-            <input class="form-control" type="number" name="cont_isdefault" value = "{{$dish->cont_isdefault}}">
-        </div>
-        <input class = "btn btn-primary" type = "submit" value = "Done">
+                        <div class="am-panel am-panel-default">
+                    <div class="am-panel-hd">Personal information</div>
+                        <div class="am-panel-bd">
+                        <div class="am-form-group">
+                            <input class="am-form-field am-radius" placeholder="firstname" value="{{ $contact->cont_firstname }}" name="cont_firstname" required>
+                        </div>
+                        <div class="am-form-group">
+                            <input class="am-form-field am-radius" placeholder="lastname" value="{{ $contact->cont_lastname }}" name="cont_lastname" required>
+                        </div>
+                        <div class="am-form-group">
+                            <input class="am-form-field am-radius" placeholder="phone" value="{{ $contact->cont_phone }}" name="cont_phone" required>
+                        </div>
+                        <div class="am-form-group">
+                            <input class="am-form-field am-radius" placeholder="gender" value="{{ $contact->cont_gender }}"name="cont_gender" required>
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="am-panel am-panel-default">
+                    <div class="am-panel-hd">Address Information</div>
+                    <div class="am-panel-bd">
+                        @include('google.autocomplete') {{-- 使用Google API 输入地址 --}}
+                        <div class="am-form-group">
+                            <input id="autocomplete" class="am-form-field am-radius" placeholder="Enter your new address" onFocus="geolocate()" type="text"></input>
+                        </div>
+                        <div class="am-form-group">
+                            <input id="street_number" class="am-form-field am-radius" placeholder="street number" value="{{ $contact->cont_street_number }}" name="cont_street_number" required>
+                        </div>
+                        <div class="am-form-group">
+                            <input id="route" class="am-form-field am-radius" placeholder="street" value = "{{ $contact->cont_street }}" name="cont_street" required>
+                        </div>
+                        <div class="am-form-group">
+                            <input id="locality" class="am-form-field am-radius" placeholder="city" value = "{{ $contact->cont_city }}" name="cont_city" required>
+                        </div>
+                        <div class="am-form-group">
+                            <input id="administrative_area_level_1" class="am-form-field am-radius" placeholder="state" value = "{{ $contact->cont_state }}" name="cont_state" required>
+                        </div>
+                        <div class="am-form-group">
+                            <input id="postal_code" class="am-form-field am-radius" placeholder="zipcode" value = "{{ $contact->cont_zipcode }}" name="cont_zipcode" required>
+                        </div>
+                        <div class="am-form-group">
+                            <input id="country" class="am-form-field am-radius" placeholder="country" value = "{{ $contact->cont_country }}" name="cont_country" required>
+                        </div>
+                    </div>
+                </div>
+        <input class="am-btn am-btn-primary am-radius am-fr" type = "submit" value = "Done">
         </input>
+        </fieldset>
     </form>
 </div>
 @endsection

@@ -5,14 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Contact;
+
 class ContactAdminController extends Controller{
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
+    public function index()
+    {
         //
+        $contacts = Contact::where('user_id',Auth::user()->id)->get();
+  
+        return view('ucp/contact/index', compact('contacts'));
     }
 
     /**
@@ -21,6 +26,7 @@ class ContactAdminController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request){
+        
         $user = $request->user_id;
         return view('ucp/contact/create', compact('user'));
         //return $user;
@@ -39,7 +45,7 @@ class ContactAdminController extends Controller{
         $user->contacts()->create($contacts);
         //$user_id = $request->user_id;
         //return $request->all();
-        return back();
+        return $this->index();
     }
 
     /**
@@ -48,9 +54,10 @@ class ContactAdminController extends Controller{
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id){
-        $contact = Dish::find($id);
-        return view('ucp/dish/index', compact('contact'));
+    public function show(){
+        $contacts = Contact::where('user_id',Auth::user()->id)->get();
+        //return $contacts;
+        return view('ucp/contact/index', compact('contacts'));
     }
 
     /**
@@ -72,9 +79,13 @@ class ContactAdminController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id){
+       
         $contact = Contact::find($id);
         $contact->update($request->all());
+        //修改其他地址default为0
+        Contact::where('id','!=',$id)->update(['cont_isdefault' => 0]);
         return redirect('ucp/contact/index');
+        
     }
 
     /**
@@ -86,6 +97,7 @@ class ContactAdminController extends Controller{
     public function destroy($id){
         $contact = Contact::find($id);
         $contact->delete();
+
         return back();
     }
 }
