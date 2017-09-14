@@ -21,6 +21,18 @@
     }
 
   </style>
+    <!--[if lt IE 9]>
+  <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+  <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+  <script src="assets/js/amazeui.ie8polyfill.min.js"></script>
+  <![endif]-->
+
+  <!--[if (gte IE 9)|!(IE)]><!-->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+
+  <!--<![endif]-->
+  <script src="{{ asset('UCP/js/amazeui.min.js') }}"></script>
+  <script src="{{ asset('UCP/js/app.js') }}"></script>
 </head>
 
 <body>
@@ -64,7 +76,7 @@
           <a class="am-cf" data-am-collapse="{target: '#collapse-nav'}"><span class="am-icon-user"></span> Profile <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
           	<ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav">
 	            <li><a href="admin-user.html" class="am-cf"><span class="am-icon-info"></span> General Info</a></li> 
-	            <li><a href="admin-user.html" class="am-cf"><span class="am-icon-home"></span> Delivery Address</a></li> 
+	            <li><a href="{{ route ('ucp.contact.index') }}" class="am-cf"><span class="am-icon-home"></span> Delivery Address</a></li> 
 	        	<li><a href="admin-user.html" class="am-cf"><span class="am-icon-paypal"></span> Payment Settings</a></li> 
 	        	<li><a href="admin-user.html" class="am-cf"><span class="am-icon-shopping-cart"></span> Order History</a></li> 
           	</ul>
@@ -118,18 +130,7 @@
   <a href="#" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
 
 
-<!--[if lt IE 9]>
-<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
-<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
-<script src="assets/js/amazeui.ie8polyfill.min.js"></script>
-<![endif]-->
 
-<!--[if (gte IE 9)|!(IE)]><!-->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-
-<!--<![endif]-->
-<script src="{{ asset('UCP/js/amazeui.min.js') }}"></script>
-<script src="{{ asset('UCP/js/app.js') }}"></script>
 </body>
 </html>
 

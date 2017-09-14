@@ -4,7 +4,11 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Auth;
 
+
+use App\Order;
 class AppServiceProvider extends ServiceProvider
 {
     /**

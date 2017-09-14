@@ -33,47 +33,66 @@
             <div role="tabpanel" class="tab-pane active" id="home">
             <h3>Main Menus</h3>
             <hr/>
-                <form action="{{ route('order.comfirm',$Shop->id) }}" method="POST">
-                {{ csrf_field() }}  
+                
        
                 <!-- 菜品列表(每行2列) -->
                 <div class="row">
                     @foreach( $Shop->dishs as $dish )
-                    <div class="col-md-6"> 
-                        <div class="thumbnail">
-                            <img src="..." >
-                            <div class="caption">
-                                <div class="media">
-                                <div class="media-left">
-                                    
-                                <img class="media-object" style="width:150px; height:150px;" src="{{ $dish->dishPic }}">
-                                   
-                                </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading">{{ $dish->dishName }}</h4>
-                                    <p>{{ $dish->dishDes }}</p>
-                                    {{--<button class="btn btn-primary pull-right">Add to cart</button> --}}
-                                    <input name="dishid_{{ $dish->id }}" id="incr-{{ $dish->id }}" style="font-size:20px;" type="text" value="0" >
+                    
 
+                        <div class="col-md-6"> 
+                            <div class="thumbnail">
+                                <img src="..." >
+                                <div class="caption">
+                                    <div class="media">
+                                    <div class="media-left">
+                                        
+                                    <img class="media-object" style="width:150px; height:150px;" src="{{ $dish->dishPic }}">
                                     
-                                    <h2 class="text-primary">${{ $dish->price }}</h2>
-                                    
-                                </div>
+                                    </div>
+                                    <div class="media-body">
+                                    <form id="fm-{{ $dish->id }}" action="{{route('order.add',['shopId' => $Shop->id , 'dishId' => $dish->id]) }}" method="POST" > 
+                                        {{ csrf_field() }}
+                                       
+
+
+                                        <h4 class="media-heading">{{ $dish->dishName }}</h4>
+                                        <p>{{ $dish->dishDes }}</p>
+                                        {{--<button class="btn btn-primary pull-right">Add to cart</button> --}}
+                                        {{-- <input name="qty" id="incr-{{ $dish->id }}" style="font-size:20px;" type="text" value="0" >--}}
+                        
+
+                                        <h2 class="text-primary">${{ $dish->price }}</h2>
+
+                                        
+                                        
+                                        <button id="btn_{{ $dish->id }}" type="submit" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button> 
+                                    </form>
+                                    {{--
+                                    <script>
+                                        var form = new FormData(document.getElementById('login-form'));
+                                        fetch("/login", {
+                                        method: "POST",
+                                        body: form
+                                        });
+                                    </script>
+                                    --}}
+                                    </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- JS -->
-                    <script>
-                        $("#incr-{{ $dish->id }}").TouchSpin();
-                    </script>
-
+                        <!-- JS -->
+                        <script>
+                            $("#incr-{{ $dish->id }}").TouchSpin();
+                        </script>
+                    
+                    
                     @endforeach
                 </div>
                 <!-- 菜品列表 -->
 
-                <button type="submit" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Checkout</button>
-                </form>
+               
             </div>
             <div role="tabpanel" class="tab-pane" id="comment">.ddd.</div>
             <div role="tabpanel" class="tab-pane" id="contact">

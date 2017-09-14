@@ -29,20 +29,30 @@ Route::group(['middleware'=>'auth'],function(){
     Route::resource('ucp/shop','ShopAdminController',[
         'as' => 'ucp'
     ]);
-
+    Route::get('transaction/{orderid}','TransactionController@create')->name('transaction.create');
    
     
     Route::get('ucp/test','UcpController@index');
     Route::get('ucp/index','UcpController@index')->name('ucp.index');
 });
 
+
+//Order
+Route::post('order/add/{shopId}/{dishId}','OrderController@addItem')->name('order.add');
+Route::get('order/remove/{id}', 'OrderController@removeItem')->name('order.remove');
+Route::get('order/cart', 'OrderController@showCart')->name('order.cart');
+
+Route::post('order/comfirm/{id}', 'OrderController@comfirm')->name('order.comfirm');
+
+
 Route::resource('shop','ShopController');
-Route::resource('order','OrderController');
-Route::post('order/comfirm/{shop}','OrderController@cofirm')->name('order.comfirm');
+
+//Route::post('order/comfirm/{shop}','OrderController@cofirm')->name('order.comfirm');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/search','SearchController@all')->name('search.all');
+
 

@@ -26,11 +26,16 @@
                                 <input class="am-form-field am-radius", placeholder="Name" name="shop_name" required> 
                             </div>
                             <div class="am-form-group">
-                                <input class="am-form-field am-radius", placeholder="shop_des" name="shop_des" required> 
+                                <input type="number" class="am-form-field am-radius", placeholder="Phone Number" name="shop_phone" required> 
                             </div>
+                        
                             <div class="am-form-group">
                                 <input class="am-form-field am-radius", placeholder="Shop Pic" name="shop_pic" required> 
                             </div>
+                            <div class="am-form-group">
+                                <input class="am-form-field am-radius", placeholder="shop_des" name="shop_des" required> 
+                            </div>
+
                         </div>
                     </div>
                 </div>

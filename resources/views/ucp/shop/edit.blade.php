@@ -29,15 +29,18 @@
                                 <label for = "shop_name">shop name</label>
                                 <input class="am-form-field am-radius" type = "text" name = "shop_name" value = "{{$shop->shop_name}}" required>
                             </div>
-                            <div class = "form-group">
-                                <label for = "shop_des">Description</label>
-                                <input class="am-form-field am-radius" type = "text" name = "shop_des" value = "{{$shop->shop_des}}" required>
+                            <div class="am-form-group">
+                                <input type="number" class="am-form-field am-radius", placeholder="Phone Number" value = "{{$shop->shop_phone}}" name="shop_phone" required> 
                             </div>
                             <div class="form-group">
                                 <label for="shop_pic">shop_pic</label>
                                 <input class="am-form-field am-radius" type="text" name="shop_pic" value = "{{$shop->shop_pic}}" required>
                             </div>
-                       
+                            <div class = "form-group">
+                                <label for = "shop_des">Description</label>
+                                <input class="am-form-field am-radius" type = "text" name = "shop_des" value = "{{$shop->shop_des}}" required>
+                            </div>
+  
                             {{--<input type = "hidden" name = "notebook_id" value = "{{$id}}"--}}
                             <p><button class="am-btn am-btn-primary am-radius am-fr" type = "submit">Update</button></p>
                             </fieldset>
