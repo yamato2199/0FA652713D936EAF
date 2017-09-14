@@ -15,13 +15,13 @@ class TransactionAdminController extends Controller
     }
 
     public function show($id){
-       // $transaction = Transaction::where('id', $id)->get();
-        $transactionItems = Transaction::findOrFail($id);
-        return $transactionItems->transactionItems;
+        $transaction = Transaction::findOrFail($id);
+      
+        
 
-
-
-        return view('ucp/transactionItem/index', compact('transactionItems', 'transaction'));
+        //return $transaction;
+        //return $transaction->transactionItems;
+        return view('ucp/transactionItem/index', compact('transaction'));
     }
 
 }
