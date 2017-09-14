@@ -45,7 +45,8 @@ class TransactionItemController extends Controller
      */
     public function show($id)
     {
-        //
+        $transactionItem = TransactionItem::findOrFail($id);
+        return view('ucp/transactionItem/index', compact('transactionItem'));
     }
 
     /**

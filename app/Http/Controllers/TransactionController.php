@@ -31,10 +31,10 @@ class TransactionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create(Request $req,$orderID)
     {
         return $this->store($req,$orderID);
-
     }
 
     /**
