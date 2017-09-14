@@ -65,8 +65,11 @@
                                         <h2 class="text-primary">${{ $dish->price }}</h2>
 
                                         
-                                        
-                                        <button id="btn_{{ $dish->id }}" type="submit" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button> 
+                                        @if(Auth::user()->user_type == 1) 
+                                            <button id="btn_{{ $dish->id }}" type="submit" class="btn btn-primary  pull-right" disabled><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button> 
+                                        @else 
+                                            <button id="btn_{{ $dish->id }}" type="submit" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true" ></span> Add to cart</button> 
+                                        @endif
                                     </form>
                                     {{--
                                     <script>

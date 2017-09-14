@@ -31,7 +31,7 @@
                 </td>
 
                 <td>
-                  $这里是总价
+                  ${{ $transaction->transactionItems->Sum('dish_price') }}
                 </td>
 
                 <td>

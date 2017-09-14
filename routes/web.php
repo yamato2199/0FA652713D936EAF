@@ -31,7 +31,9 @@ Route::group(['middleware'=>'auth'],function(){
     ]);
     Route::get('transaction/{orderid}','TransactionController@create')->name('transaction.create');
    
-    
+    Route::resource('ucp/transaction','TransactionAdminController',[
+        'as' => 'ucp'
+    ]);
     Route::get('ucp/test','UcpController@index');
     Route::get('ucp/index','UcpController@index')->name('ucp.index');
 });
