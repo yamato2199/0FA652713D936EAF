@@ -44,7 +44,7 @@
                 <h2 class="cover-heading"  style="color:white;">Shop Owner</h2>
                 <p class="lead">I'm a shop owner, i want to open my shop in this system.</p>
                 <p class="lead">
-                <a href="#" class="btn btn-primary" id="form_banner">Register</a>
+                <a href="{{ route('register.shop') }}" class="btn btn-primary" id="form_banner">Register</a>
                 </p>
                 </div>
             </div>

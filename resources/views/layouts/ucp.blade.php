@@ -46,7 +46,7 @@
   <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
 
     <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list">
-      	<li><a href="javascript:;"><span class="am-icon-envelope-o"></span> Notification <span class="am-badge am-badge-warning">5</span></a></li>
+      	<li><a href="javascript:;"><span class="am-icon-envelope-o"></span> Notification<span class="am-badge am-badge-warning">5</span></a></li>
       	<li class="am-dropdown" data-am-dropdown>
 	        <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
 	          	<span class="am-icon-users"></span> {{ Auth::user()->name }} <span class="am-icon-caret-down"></span>
@@ -77,25 +77,28 @@
           	<ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav">
 	            <li><a href="admin-user.html" class="am-cf"><span class="am-icon-info"></span> General Info</a></li> 
 	            <li><a href="{{ route ('ucp.contact.index') }}" class="am-cf"><span class="am-icon-home"></span> Delivery Address</a></li> 
-	        	<li><a href="admin-user.html" class="am-cf"><span class="am-icon-paypal"></span> Payment Settings</a></li> 
-	        	<li><a href="admin-user.html" class="am-cf"><span class="am-icon-shopping-cart"></span> Order History</a></li> 
+	        	  {{-- 去你妈MALISA要个毛Payment <li><a href="admin-user.html" class="am-cf"><span class="am-icon-paypal"></span> Payment Settings</a></li> --}}
+	        	
           	</ul>
         </li>
 
         <!-- Shop管理页面 -->
+        @if( Auth::user()->user_type == 1)
         <li>
-          <a class="am-cf" data-am-collapse="{target: '#collapse-nav1'}"><span class="am-icon-archive"></span> Shops <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+          <a class="am-cf" data-am-collapse="{target: '#collapse-nav1'}"><span class="am-icon-archive"></span> Shops<span class="am-icon-angle-right am-fr am-margin-right"></span></a>
           	<ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav1">
 	            <li><a href="{{ route('ucp.shop.index') }}" class="am-cf"><span class="am-icon-archive"></span> My Shops</a></li>
 	            <li><a href="admin-help.html"><span class="am-icon-list"></span> My Dishes</a></li>
 	            
           	</ul>
         </li>
+        @endif
         <!-- Order管理 -->
         <li>
-          <a class="am-cf" data-am-collapse="{target: '#collapse-nav2'}"><span class="am-icon-shopping-cart"></span> Transaction <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+          <a class="am-cf" data-am-collapse="{target: '#collapse-nav2'}"><span class="am-icon-shopping-cart"></span> Transaction<span class="am-icon-angle-right am-fr am-margin-right"></span></a>
           	<ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav2">
-	            <li><a href="admin-user.html" class="am-cf"><span class="am-icon-list"></span> View Transactions</a></li> 
+              <li><a href="{{ route('order.cart') }}" class="am-cf"><span class="am-icon-shopping-cart"></span> View Shopping Cart</a></li> 
+	            <li><a href="{{ route('ucp.transaction.index') }}" class="am-cf"><span class="am-icon-list"></span> View Transactions</a></li> 
           	</ul>
         </li>
         
