@@ -18,9 +18,6 @@ class TransactionAdminController extends Controller
        // $transaction = Transaction::where('id', $id)->get();
         $transactionItems = Transaction::findOrFail($id);
         return $transactionItems->transactionItems;
-
-
-
         return view('ucp/transactionItem/index', compact('transactionItems', 'transaction'));
     }
 

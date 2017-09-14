@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap-main-theme.css') }}">
     <link href="{{ asset('css/bootstrap-main-theme.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/search.css') }}" rel="stylesheet" type="text/css">
-
+    <link href="{{ asset('css/login.css') }}" rel="stylesheet" type="text/css">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
     <script src="{{ asset('js/bootstrap.js') }}"></script>
@@ -44,9 +44,46 @@
                         </a>
                         --}}
                         @if (Auth::guest())
-                        <li><a href="{{ route('login') }}"><span class="glyphicon glyphicon-user"></span> Login</a></li>
+                        {{--<li><a href="{{ route('login') }}"><span class="glyphicon glyphicon-user"></span> Login</a></li>--}}
+                        <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
+                            <ul id="login-dp" class="dropdown-menu">
+                                <li>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                            
+                                                    <form class="form" role="form" accept-charset="UTF-8" id="login-nav" method="POST" action="{{ route('login') }}">
+                                                        {{ csrf_field() }}
+                                                        <div class="form-group">
+                                                                <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                                                                <input name="email" type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
+                                                        </div>
+                                                        <div class="form-group">
+                                                                <label class="sr-only" for="exampleInputPassword2">Password</label>
+                                                                <input name="password" type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
+                                                                <div class="help-block text-right"><a href="{{ route('password.request') }}">Forget the password ?</a></div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                                <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                                                        </div>
+                                                        <div class="checkbox">
+                                                                <label>
+                                                                <input type="checkbox"  name="remember" {{ old('remember') ? 'checked' : '' }}> keep me logged-in
+                                                                </label>
+                                                        </div>
+                                                    </form>
+                                            </div>
+                                            <div class="bottom text-center">
+                                                New here ? <a href="{{ route('register') }}"><b>Don't have account?</b></a>
+                                            </div>
+                                        </div>
+                                </li>
+                            </ul>
+                        </li>
                         @else
+                        @if( Auth::user()->user_type != 1)
                         <li><a href="{{ route('order.cart') }}"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart <span class="badge"> 0 </span></a></li>
+                        @endif
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             <span class="glyphicon glyphicon-user"></span>    {{ Auth::user()->name }} <span class="caret"></span>
