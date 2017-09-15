@@ -26,6 +26,9 @@ Route::group(['middleware'=>'auth'],function(){
     Route::resource('ucp/contact','ContactAdminController',[
         'as' => 'ucp'
     ]);
+    Route::post('ucp/contact/{id}/default','ContactAdminController@default')->name('ucp.contact.default');
+    
+
     Route::resource('ucp/shop','ShopAdminController',[
         'as' => 'ucp'
     ]);

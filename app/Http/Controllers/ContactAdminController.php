@@ -42,9 +42,12 @@ class ContactAdminController extends Controller{
         $user = Auth::user();
         $contacts = $request->all();
         //Contact::create($contacts);
-        $user->contacts()->create($contacts);
+        $contact = $user->contacts()->create($contacts);
         //$user_id = $request->user_id;
         //return $request->all();
+        //默认default
+        $this->default($contact->id);
+
         return $this->index();
     }
 
@@ -83,9 +86,18 @@ class ContactAdminController extends Controller{
         $contact = Contact::find($id);
         $contact->update($request->all());
         //修改其他地址default为0
-        Contact::where('id','!=',$id)->update(['cont_isdefault' => 0]);
+        //Contact::where('id','!=',$id)->update(['cont_isdefault' => 0]);
         return redirect('ucp/contact/index');
         
+    }
+    public function default($id)
+    {
+        //return $request->all();
+        //修改其他地址default为0
+        $contact = Contact::find($id);
+        $contact->update(['cont_isdefault' => 1]);
+        Contact::where('id','!=',$id)->update(['cont_isdefault' => 0]);
+        return $this->index();
     }
 
     /**

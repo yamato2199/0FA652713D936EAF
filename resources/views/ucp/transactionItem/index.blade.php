@@ -29,7 +29,7 @@
                   </tr>
                   <tr>
                       <td>Contact Address</td>
-                      <td>{{ $transaction->shop_address }}</td>
+                      <td>{{ $transaction->cust_cont_address }}</td>
                   </tr>
                   <tr>
                       <td>Created Time</td>
