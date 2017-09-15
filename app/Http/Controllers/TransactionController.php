@@ -11,7 +11,7 @@ use App\TransactionItem;
 use App\ShopSell;
 use App\OrderItem;
 use App\Order;
-
+use App\Notification;
 
 
 class TransactionController extends Controller
@@ -90,6 +90,15 @@ class TransactionController extends Controller
         $order->orderItems()->delete();
         $order->delete();
         
+        //最后创建私信给通知店家
+
+        $notify = Notification::create([
+            'receiver_id' => $shop->user_id,
+            'sender_id' => Auth::user()->id,
+            'title' => 'You have a new order from '.Auth::user()->name,
+            'body' => 'You got a new order, please check your transaction, ID:'.$trans->id
+        ]);
+        $notify->save();
 
 
         //return $order;

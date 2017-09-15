@@ -36,6 +36,14 @@ Route::group(['middleware'=>'auth'],function(){
     ]);
     Route::get('ucp/test','UcpController@index');
     Route::get('ucp/index','UcpController@index')->name('ucp.index');
+
+    //消息
+    Route::get('ucp/notify/','NotificationController@index')->name('ucp.notify.index');
+    Route::get('ucp/notify/{id}','NotificationController@view')->name('ucp.notify.view');
+    Route::get('ucp/notify/{id}/mark','NotificationController@markRead')->name('ucp.notify.mark');
+    
+    
+    
 });
 
 

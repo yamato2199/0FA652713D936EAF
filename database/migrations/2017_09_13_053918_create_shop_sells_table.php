@@ -19,6 +19,7 @@ class CreateShopSellsTable extends Migration
             $table->integer('shop_id');
             $table->timestamps();
         });
+        
     }
 
     /**
