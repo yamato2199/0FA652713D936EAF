@@ -48,11 +48,13 @@ class TransactionController extends Controller
         //return $request->all();
 
 
-        $con = Contact::find($request->selected_address)->first();
-        $order = Order::find($orderID)->first();
-
-        $shop = Shop::find($order->shop_id)->first();
-
+        $con = Contact::find($request->selected_address);
+        //$con = Contact::find(4);
+        //return  $con->cont_street_number;
+        $order = Order::find($orderID);
+       
+        $shop = Shop::find($order->shop_id);
+        //return $shop;
         $orderitms = OrderItem::where('order_id',$orderID)->get();
        
        

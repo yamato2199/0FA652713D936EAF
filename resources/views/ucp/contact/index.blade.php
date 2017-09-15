@@ -51,9 +51,9 @@
 								</td>
                                 <td>
                                    
-                                    <form class="am-form" action="{{ route('ucp.contact.update', $contact->id) }}" method="POST">
+                                    <form class="am-form" action="{{ route('ucp.contact.default', $contact->id) }}" method="POST">
                                         {{csrf_field()}}
-                                        {{method_field('PUT')}}
+										
                                         <input type="hidden" id="df_{{ $contact->id }}" class="am-form-field am-radius" value="{{$contact->cont_isdefault}}" name="cont_isdefault" required> 
                                         
                                         @if( $contact->cont_isdefault )

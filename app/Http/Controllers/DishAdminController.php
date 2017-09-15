@@ -93,6 +93,7 @@ class DishAdminController extends Controller
          
          //$dish = Dish::find($id);
         $Shop = Shop::find($shop_id);
+        //return  $Shop;
         $dish = $Shop->dishs()->find($dish_id);
         $dish->update($request->all());
          //return redirect()->route('shop.dish.show', compact('shop_id'));

@@ -43,7 +43,7 @@
     </div>
 
     <!-- 选择送货地址 -->
-    <form action="{{ route('transaction.create', $order->first()->id ) }}" method="GET">
+    <form action="{{ route('transaction.create', $order->id ) }}" method="GET">
     @if($contacts->count())
     <table class="table table-striped">
         <thead>
