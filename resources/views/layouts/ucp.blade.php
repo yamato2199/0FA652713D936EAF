@@ -38,7 +38,7 @@
 <body>
 <header class="am-topbar am-topbar-inverse admin-header">
   <div class="am-topbar-brand">
-    <strong>SFO</strong> <small>UCP Panel</small>
+    <a href="{{ route('ucp.index') }}"><strong>SFO</strong> <small>UCP Panel</small></a>
   </div>
 
   <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">Switch</span> <span class="am-icon-bars"></span></button>
@@ -55,8 +55,8 @@
 	          	<span class="am-icon-user"></span> {{ Auth::user()->name }} <span class="am-icon-caret-down"></span>
 	        </a>
 	        <ul class="am-dropdown-content">
-	          	<li><a href="#"><span class="am-icon-user"></span> Profile</a></li>
-	          	<li><a href="#"><span class="am-icon-cog"></span> Settings</a></li>
+	          	<li><a href="{{ route('ucp.contact.index') }}"><span class="am-icon-user"></span> Settings</a></li>
+	          	<li><a href="{{ route('index') }}"><span class="am-icon-cog"></span> Main Site</a></li>
 	          	<li>
               <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><span class="am-icon-power-off"></span> Logout</a>
               </li>
@@ -78,7 +78,7 @@
         <li>
           <a class="am-cf" data-am-collapse="{target: '#collapse-nav'}"><span class="am-icon-user"></span> Profile <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
           	<ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav">
-	            <li><a href="admin-user.html" class="am-cf"><span class="am-icon-info"></span> General Info</a></li> 
+	            <li><a href="{{ route('ucp.index') }}" class="am-cf"><span class="am-icon-info"></span> General Info</a></li> 
 	            @if( Auth::user()->user_type == 0)
                 <li><a href="{{ route ('ucp.contact.index') }}" class="am-cf"><span class="am-icon-home"></span> Delivery Address</a></li> 
 	        	  @endif
