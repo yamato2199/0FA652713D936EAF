@@ -391,7 +391,7 @@ html {
 body {
   position: relative;
   background: #fff;
-  font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", "FontAwesome", sans-serif;
+  font-family: "Segoe UI", "Lucida Grande", Helvetica, Helvetica Neue, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", "FontAwesome", sans-serif;
   font-weight: normal;
   line-height: 1.6;
   color: #333333;
@@ -577,7 +577,7 @@ blockquote {
 blockquote small {
   display: block;
   color: #999999;
-  font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", "FontAwesome", sans-serif;
+  font-family: "Segoe UI", "Lucida Grande", Helvetica, Helvetica Neue, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", "FontAwesome", sans-serif;
   text-align: right;
 }
 blockquote p:last-of-type {
@@ -8172,7 +8172,7 @@ img.am-thumbnail,
   }
 }
 .am-sans-serif {
-  font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", "FontAwesome", sans-serif;
+  font-family: "Segoe UI", "Lucida Grande", Helvetica, Helvetica Neue, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", "FontAwesome", sans-serif;
 }
 .am-serif {
   font-family: Georgia, "Times New Roman", Times, SimSun, "FontAwesome", serif;
