@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+
 use App\Shop;
 
 class ShopAdminController extends Controller
@@ -38,8 +40,35 @@ class ShopAdminController extends Controller
      */
     public function store(Request $request)
     {
+        $prefix = "/uploads/";
         $dataInput = $request->all();
-        //return $dataInput;
+
+        
+        
+        if($request->hasFile('shop_pic'))
+        {
+            $uploadFile = $request->file('shop_pic');
+            $unique_name = md5($uploadFile->getClientOriginalName().time());
+            
+            $filename = $unique_name.".".$uploadFile->getClientOriginalExtension();
+            $uploadFile->move('uploads', $filename);
+
+            $user = Auth::user();
+            $user->shops()->create([
+                 'shop_pic' => $prefix.$filename,
+                 'shop_des' => $request->shop_des, 
+                 'shop_street_number' => $request->shop_street_number, 
+                 'shop_street' => $request->shop_street, 
+                 'shop_city' => $request->shop_city, 
+                 'shop_state' => $request->shop_state, 
+                 'shop_zipcode' => $request->shop_zipcode, 
+                 'shop_country' => $request->shop_country,   
+                 'shop_phone ' => $request->shop_phone
+            ]);
+
+            return redirect('/ucp/shop');
+        }
+
         $user = Auth::user();
         $user->shops()->create($dataInput);
         return redirect('/ucp/shop');

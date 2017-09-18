@@ -23,9 +23,21 @@
                         <div class="am-form-group">
                             <input class="am-form-field am-radius" placeholder="phone" name="cont_phone" required>
                         </div>
-
+                        {{--
                         <div class="am-form-group">
                             <input class="am-form-field am-radius" placeholder="gender" name="cont_gender" required>
+
+                        </div>
+                        --}}
+                        <div class="am-form-group">
+                        <label class="am-radio">
+                            <input type="radio" name="cont_gender" value="0" data-am-ucheck checked>
+                            Male
+                        </label>
+                        <label class="am-radio">
+                            <input type="radio" name="cont_gender" value="1" data-am-ucheck>
+                            Female
+                        </label>
                         </div>
                     </div>
                 </div>

@@ -30,6 +30,7 @@
                                 <input class="am-form-field am-radius" type = "text" name = "shop_name" value = "{{$shop->shop_name}}" required>
                             </div>
                             <div class="am-form-group">
+                                <label for = "shop_phone">Phone</label>
                                 <input type="number" class="am-form-field am-radius", placeholder="Phone Number" value = "{{$shop->shop_phone}}" name="shop_phone" required> 
                             </div>
                             <div class="form-group">

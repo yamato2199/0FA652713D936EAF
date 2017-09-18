@@ -45,9 +45,12 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('ucp/notify/{id}','NotificationController@view')->name('ucp.notify.view');
     Route::get('ucp/notify/{id}/mark','NotificationController@markRead')->name('ucp.notify.mark');
     
+
+    
     
     
 });
+
 
 
 //Order
