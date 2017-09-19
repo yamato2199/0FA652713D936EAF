@@ -22,7 +22,22 @@
                             <input class="am-form-field am-radius" placeholder="phone" value="{{ $contact->cont_phone }}" name="cont_phone" required>
                         </div>
                         <div class="am-form-group">
-                            <input class="am-form-field am-radius" placeholder="gender" value="{{ $contact->cont_gender }}"name="cont_gender" required>
+                            <label class="am-radio">
+                                @if($contact->cont_gender == 0)
+                                    <input type="radio" name="cont_gender" value="0" data-am-ucheck checked>
+                                @else
+                                    <input type="radio" name="cont_gender" value="0" data-am-ucheck >
+                                @endif
+                                Male
+                            </label>
+                            <label class="am-radio">
+                                @if($contact->cont_gender == 1)
+                                    <input type="radio" name="cont_gender" value="1" data-am-ucheck checked>
+                                @else
+                                    <input type="radio" name="cont_gender" value="1" data-am-ucheck>
+                                @endif
+                                Female
+                            </label>
                         </div>
                     </div>
                 </div>

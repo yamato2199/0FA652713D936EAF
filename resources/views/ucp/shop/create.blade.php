@@ -8,7 +8,7 @@
     </div>
     <hr/>
 
-    <form id="create_form" class="am-form" action="{{route('ucp.shop.store')}}" method="POST" data-am-validator>
+    <form id="create_form" class="am-form" action="{{route('ucp.shop.store')}}" method="POST" enctype="multipart/form-data" data-am-validator>
         <fieldset>
             {{ csrf_field() }}
             <!-- 折叠面板 -->
@@ -20,7 +20,7 @@
                         </h4>
                     </div>
                     <!-- 店家普通讯息 -->
-                    <div id="Generan-info" class="am-panel-collapse am-collapse am-in">
+                    <div id="Generan-info" class="am-panel-collapse am-collapse am-in" >
                         <div class="am-panel-bd">
                             <div class="am-form-group">
                                 <input class="am-form-field am-radius", placeholder="Name" name="shop_name" required> 
@@ -28,10 +28,30 @@
                             <div class="am-form-group">
                                 <input type="number" class="am-form-field am-radius", placeholder="Phone Number" name="shop_phone" required> 
                             </div>
-                        
+                            {{--
                             <div class="am-form-group">
                                 <input class="am-form-field am-radius", placeholder="Shop Pic" name="shop_pic" required> 
+                                <input type="file" name="shop_pic" id="file">
                             </div>
+                            --}}
+                            <div class="am-form-group am-form-file">
+                                <button type="button" class="am-btn am-btn-primary am-btn-sm">
+                                    <i class="am-icon-cloud-upload"></i> Select file...</button>
+                                <input id="doc-form-file" type="file" name="shop_pic" accept="image/*">
+                            </div>
+                                <div id="file-list"></div>
+                                <script>
+                                $(function() {
+                                    $('#doc-form-file').on('change', function() {
+                                    var fileNames = '';
+                                    $.each(this.files, function() {
+                                        fileNames += '<span class="am-badge">' + this.name + '</span> ';
+                                    });
+                                    $('#file-list').html(fileNames);
+                                    });
+                                });
+                                </script>
+                           
                             <div class="am-form-group">
                                 <input class="am-form-field am-radius", placeholder="shop_des" name="shop_des" required> 
                             </div>
