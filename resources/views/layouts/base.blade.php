@@ -183,7 +183,7 @@
                     <h5>Contract</h5>
                     <ul class="list-unstyled">
                         <li><a href="#">A</a></li>
-                        <li><a href="/0x00">d</a></li>
+                        <li><a href="/0x00">B</a></li>
                         <li><a href="/0xFF">C</a></li>
                     </ul>
                 </div>
