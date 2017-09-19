@@ -1,0 +1,23 @@
+.thumbnail:hover{
+    border-color: #D5220F;   
+}
+.navbar {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+#form_banner{
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#bk {
+    /*background-image:url(/img/b6.jpg);*/
+    background-image:url(/img/bg-dos.jpg); /* FOR FUN =w= */
+    color:aliceblue;
+	background-size:cover;                    
+    background-repeat:no-repeat;
+    background-position:center center;
+	text-shadow:2px 2px 10px #000000;
+}
+

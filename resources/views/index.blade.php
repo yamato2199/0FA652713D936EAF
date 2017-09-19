@@ -1,9 +1,13 @@
 
 @extends('layouts.base') 
 @section('main')
+
+
 <div class="container-fluid" id="bk" style="margin-top: -20px;">
-	
-	<div class="container">
+
+
+
+<div class="container">
 
 <div class="row">
     <div class="text-center" style="margin-left: auto; margin-right: auto; margin-top: 100px; margin-bottom: 120px;">
@@ -53,6 +57,11 @@
 
     </div>
 </div>
+
+ 
     </div>
 </div>
+
+
+
 @endsection
