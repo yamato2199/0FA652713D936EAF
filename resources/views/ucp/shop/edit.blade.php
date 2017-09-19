@@ -21,7 +21,7 @@
 
                 <div class="am-tabs-bd">
                     <div class="am-tab-panel am-fade am-in am-active" id="tab1">
-                        <form class="am-form" action="{{route('ucp.shop.update', $shop->id)}}" method="POST" data-am-validator>
+                        <form class="am-form" action="{{route('ucp.shop.update', $shop->id)}}" method="POST" enctype="multipart/form-data" data-am-validator>
                             <fieldset>
                             {{csrf_field()}}
                             {{method_field('PUT')}}
@@ -33,10 +33,32 @@
                                 <label for = "shop_phone">Phone</label>
                                 <input type="number" class="am-form-field am-radius", placeholder="Phone Number" value = "{{$shop->shop_phone}}" name="shop_phone" required> 
                             </div>
+                            {{--
                             <div class="form-group">
                                 <label for="shop_pic">shop_pic</label>
                                 <input class="am-form-field am-radius" type="text" name="shop_pic" value = "{{$shop->shop_pic}}" required>
                             </div>
+                            --}}
+                            <p>
+                                <img src="{{$shop->shop_pic}}"  class="am-img-thumbnail am-radius"  width="140" height="140"/>
+                            </p>
+                            <div class="am-form-group am-form-file">
+                                <button type="button" class="am-btn am-btn-primary am-btn-sm">
+                                    <i class="am-icon-cloud-upload"></i> Select file...</button>
+                                <input id="doc-form-file" type="file" name="shop_pic" value="{{$shop->shop_pic}}" accept="image/*">
+                            </div>
+                                <div id="file-list"></div>
+                                <script>
+                                $(function() {
+                                    $('#doc-form-file').on('change', function() {
+                                    var fileNames = '';
+                                    $.each(this.files, function() {
+                                        fileNames += '<span class="am-badge">' + this.name + '</span> ';
+                                    });
+                                    $('#file-list').html(fileNames);
+                                    });
+                                });
+                                </script>
                             <div class = "form-group">
                                 <label for = "shop_des">Description</label>
                                 <input class="am-form-field am-radius" type = "text" name = "shop_des" value = "{{$shop->shop_des}}" required>

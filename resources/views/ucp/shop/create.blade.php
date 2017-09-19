@@ -37,7 +37,7 @@
                             <div class="am-form-group am-form-file">
                                 <button type="button" class="am-btn am-btn-primary am-btn-sm">
                                     <i class="am-icon-cloud-upload"></i> Select file...</button>
-                                <input id="doc-form-file" type="file" name="shop_pic" >
+                                <input id="doc-form-file" type="file" name="shop_pic" accept="image/*">
                             </div>
                                 <div id="file-list"></div>
                                 <script>
