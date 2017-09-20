@@ -10,19 +10,35 @@
     <!-- TemplateEndEditable -->
     <!-- TemplateBeginEditable name="head" -->
     <!-- TemplateEndEditable -->
-    <link rel="stylesheet" href="{{ asset('css/bootstrap-main-theme.css') }}">
-    <link href="{{ asset('css/bootstrap-main-theme.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('css/search.css') }}" rel="stylesheet" type="text/css">
+    {{--<link rel="stylesheet" href="{{ asset('css/bootstrap-main-theme.css') }}"> 
+
+    <link rel="stylesheet" href="{{ asset('css/dos-main-theme.css') }}">
+    --}}
+    
+    
+
     <link href="{{ asset('css/login.css') }}" rel="stylesheet" type="text/css">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
     <script src="{{ asset('js/bootstrap.js') }}"></script>
-
+    <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet" type="text/css">
     
+    @if (Session::has('style'))
+        <link href="{{ asset('css/dos-main-theme.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('css/dos.css') }}" rel="stylesheet" type="text/css"> 
+    @else
+        <link href="{{ asset('css/bootstrap-main-theme.css') }}" rel="stylesheet" type="text/css">
+    @endif
+
 
 </head>
 
 <body>
+
+    @if (Session::has('style'))
+        @include('addtional.dev')
+    @endif
     <!-- 导航栏 -->
     <nav class="navbar navbar-default" role="navigation">
         <div class="container">
@@ -136,6 +152,7 @@
     <!-- TemplateBeginEditable name="MainContext" -->
     @yield('main')
     <div class="container-fluid">
+    
         <div class="container">
             @yield('body')
         </div>
@@ -166,8 +183,10 @@
                     <h5>Contract</h5>
                     <ul class="list-unstyled">
                         <li><a href="#">A</a></li>
-                        <li><a href="#">d</a></li>
-                        <li><a href="#">C</a></li>
+                        
+                        <li><a href="/0x00">B {{ Session::has('style') ? "(Don't touch me!) =w=" : ""}}</a></li>
+                       
+                        <li><a href="/0xFF">C {{ Session::has('style') ? "" : "(Nothing here)"}}</a></li>
                     </ul>
                 </div>
 
