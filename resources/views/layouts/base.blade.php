@@ -183,8 +183,10 @@
                     <h5>Contract</h5>
                     <ul class="list-unstyled">
                         <li><a href="#">A</a></li>
-                        <li><a href="/0x00">B</a></li>
-                        <li><a href="/0xFF">C</a></li>
+                        
+                        <li><a href="/0x00">B {{ Session::has('style') ? "(Don't touch me!) =w=" : ""}}</a></li>
+                       
+                        <li><a href="/0xFF">C {{ Session::has('style') ? "" : "(Nothing here)"}}</a></li>
                     </ul>
                 </div>
 
