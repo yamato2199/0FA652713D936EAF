@@ -110,6 +110,6 @@ class ContactAdminController extends Controller{
         $contact = Contact::find($id);
         $contact->delete();
 
-        return back();
+        return redirect()->route('ucp.contact.index');
     }
 }
