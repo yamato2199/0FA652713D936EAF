@@ -24,7 +24,7 @@
         <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Main Menus</a></li>
             <li role="presentation"><a href="#comment" aria-controls="comment" role="tab" data-toggle="tab">Comments</a></li>
-            <li role="presentation"><a href="#contact" aria-controls="contact" role="tab" data-toggle="tab">Contact</a></li>
+            <li role="presentation"><a href="#contact" aria-controls="contact" role="tab" data-toggle="tab" id="Contact">Contact</a></li>
         </ul>
         <div class="panel panel-default">
         <div class="panel-body">
@@ -103,20 +103,77 @@
                 <h3>Address</h3>
                 <hr/>
                 <h4>
-                {{ $Shop->shop_street_number }}
-                {{ $Shop->shop_street }}
-                {{ $Shop->shop_city }}
-                {{ $Shop->shop_state }}
-                {{ $Shop->shop_zipcode }}
+                <div id="shop_address">
+                {{ $Shop->shop_street_number }},
+                {{ $Shop->shop_street }},
+                {{ $Shop->shop_city }},
+                {{ $Shop->shop_state }},
+                {{ $Shop->shop_zipcode }},
                 {{ $Shop->shop_country }}
-
+                </div>
+                <h4>Phone: {{ $Shop->shop_phone }}</h4>
                 </h4>
+                
+                <div id="map" style="height: 500px;">saw</div>
+                <!-- Google Map(估计代码很坑，因为是JS) -->
+                
+                <script>
+                
+                </script>
+                <script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCAHMEsT8SxFopteetKsuwQjUbpUBtjj4&callback=initMap"></script>
+                
+               
+                
             </div> 
             </div> 
             </div>
         </div>
         
     </div>
+    <script>
+    $('#Contact').click(function (e) {
+        e.preventDefault();
+        //绘制Canvas
+        var marker =null;
+        var map = null;
+        
+        function initMap() {
+           
+            map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 17,
+            center: {lat: -34.397, lng: 150.644}
+            });
+            var geocoder = new google.maps.Geocoder();
+                     
+            setTimeout(function() {
+                google.maps.event.trigger(map, 'resize');
+                geocodeAddress(geocoder, map);
+            }, 200);
+            
+            //geocodeAddress(geocoder, map);
+        }
+
+        function geocodeAddress(geocoder, resultsMap) {
+            var address = document.getElementById('shop_address').innerHTML;
+            geocoder.geocode({'address': address}, function(results, status) {
+            if (status === 'OK') {
+                resultsMap.setCenter(results[0].geometry.location);
+                marker = new google.maps.Marker({
+                map: resultsMap,
+                position: results[0].geometry.location
+                });
+                
+            } else {
+                alert('Geocode was not successful for the following reason: ' + status);
+            }
+            });
+        }
+        initMap();
+        
+
+    });
+    
+    </script>
 </div>
 
 @endsection
