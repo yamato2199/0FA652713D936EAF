@@ -10,7 +10,14 @@
         <div class="row">
              <div class="col-md-8"><h1>{{ $Shop->shop_name }}</h1><p>{{ $Shop->shop_des }}</p></div>
              <div class="col-md-2 text-center" ><h4>Area</h4><h3>{{ $Shop->shop_city }}</h3></div>
-             <div class="col-md-2 text-center"><h4>Rating</h4><h3>5/10</h3></div>
+             <div class="col-md-2 text-center"><h4>Rating</h4><h3>
+             <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+             <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+             <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+             <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+             
+
+             </h3></div>
         </div>
     </div>
 </div>
