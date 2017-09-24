@@ -26,7 +26,8 @@
                     <input name="keyword" class="form-control" placeholder="Search any food / shop you want"/>
                 </div>
                 <div class="col-md-2" style="margin: 0px; padding: 0px; margin-top: 5px;">
-                    <button class="btn btn-primary" style="width: 100%;" type="submit">Search</button>
+                    <button class="btn btn-primary" style="width: 100%;" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+ Search</button>
                 </div>
             </div>
 
