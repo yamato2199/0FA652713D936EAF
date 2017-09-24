@@ -1,4 +1,4 @@
-@extends('layouts/ucp')
+@extends('layouts.ucp')
 @section('body')
     <div class="am-cf am-padding am-padding-bottom-0">
     	<div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">Edit Contact</strong></div>

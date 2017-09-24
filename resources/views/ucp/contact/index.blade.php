@@ -1,4 +1,4 @@
-@extends('layouts\ucp')
+@extends('layouts.ucp')
 @section('body')
 	<!-- 标题 -->
 	<div class="am-cf am-padding am-padding-bottom-0">
